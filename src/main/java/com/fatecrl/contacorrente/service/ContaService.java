@@ -3,8 +3,11 @@ package com.fatecrl.contacorrente.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.fatecrl.contacorrente.model.Conta;
 
+@Service
 public class ContaService {
     private static List<Conta> contas = new ArrayList<Conta>();
 
@@ -30,7 +33,7 @@ public class ContaService {
         //stream para trazer filtros "Laambida", a partir dele conseguimos o FILTER
         return contas.stream()
             .filter(c -> c.equals(conta))
-            .findFirst().get(); //get ou orElse(null)
+            .findFirst().orElse(null); //get ou orElse(null)
     }
 
     public Conta find(Long id){
